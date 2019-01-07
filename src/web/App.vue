@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import HelloWorld from '_c/HelloWorld.vue'
+import HelloWorld from 'web_c/HelloWorld.vue'
 
 export default {
   name: 'app',
