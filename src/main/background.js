@@ -2,8 +2,6 @@
 
 import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
-import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer'
-
 const isDevelopment = process.env.NODE_ENV !== 'production'
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -15,9 +13,7 @@ function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({ width: 800, height: 600 })
   if (process.env.NODE_ENV === 'development') {
-    installExtension(REACT_DEVELOPER_TOOLS)
-      .then((name) => console.log(`Added Extension:  ${name}`))
-      .catch((err) => console.log('An error occurred: ', err))
+
   }
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
@@ -58,13 +54,9 @@ app.on('activate', () => {
 app.on('ready', async () => {
   require('electron-debug')({ showDevTools: true })
   if (isDevelopment && !process.env.IS_TEST) {
-    // BrowserWindow.addDevToolsExtension('../node_modules/vue-devtools')
-    let installExtension = require('electron-devtools-installer')
-    installExtension.default(installExtension.VUEJS_DEVTOOLS)
-      .then(() => {})
-      .catch(err => {
-        console.log('Unable to install vue-devtools: \n', err)
-      })
+    // BrowserWindow.addDevToolsExtension('/home/echo/.config/google-chrome/Default/Extensions/nhdogjmejiglipccpnnnanhbledajbpd/4.1.5_0')
+    // BrowserWindow.addDevToolsExtension('_n/vue-devtools/vender')
+    require('vue-devtools').install()
     // Install Vue Devtools
     // await installVueDevtools()
   }

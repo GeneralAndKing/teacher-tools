@@ -12,10 +12,19 @@ module.exports = {
   configureWebpack: config => {
     //
   },
+  pluginOptions: {
+    electronBuilder: {
+      chainWebpackRendererProcess: config => {
+      },
+      mainProcessFile: 'src/main/background.js'
+    }
+  },
   chainWebpack: config => {
+    config.entry('app').clear().add('./src/render/main.js')
     config.resolve.alias
-      .set('@', resolve('src'))
-      .set('_c', resolve('src/components'))
+      .set('@', resolve('src/render'))
+      .set('_n', resolve('node_modules'))
+      .set('_c', resolve('src/render/components'))
   },
   // 打包时不生成.map文件，减少体积，加快速度
   productionSourceMap: false,
