@@ -3,7 +3,7 @@
     img(src='./assets/logo.png')
     div
       p
-        | If iView is successfully added to this project, you'll see an
+        | web端
         code(v-text="'<Button>'")
         |         below
       Button(type='primary') Button
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import HelloWorld from '_c/HelloWorld.vue'
+import HelloWorld from 'web_c/HelloWorld.vue'
 
 export default {
   name: 'app',
