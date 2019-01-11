@@ -1,6 +1,5 @@
 const path = require('path')
 const resolve = dir => path.join(__dirname, dir)
-
 module.exports = {
   css: {
     loaderOptions: {
@@ -9,6 +8,7 @@ module.exports = {
       }
     }
   },
+  assetsDir: 'common',
   pages: {
     app: {
       // entry for the page
