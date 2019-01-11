@@ -12,7 +12,7 @@
     "url": "https://github.com/RuiFG"
   },
   "description": "The tools is help teacher",
-  "license": "GNU General Public License v3.0",
+  "license": "GPL-3.0-or-later",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
