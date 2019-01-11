@@ -1,7 +1,19 @@
 {
-  "name": "help-teacher",
-  "version": "0.1.0",
-  "private": true,
+  "name": "teacher-tools",
+  "version": "2.0.0",
+  "author1": {
+    "name": "EchoCow",
+    "email": "lizhongyue248@163.com",
+    "url": "https://echocow.cn"
+  },
+  "author2": {
+    "name": "Rui",
+    "email": "905153643@qq.com",
+    "url": "https://github.com/RuiFG"
+  },
+  "description": "The tools is help teacher",
+  "license": "GNU General Public License v3.0",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
