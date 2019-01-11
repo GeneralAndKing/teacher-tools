@@ -1,6 +1,6 @@
 <template lang="pug">
   #app
-    img(src='./assets/logo.png')
+    img(src='../common/assets/logo.png')
     div
       p
         | If iView is successfully added to this project, you'll see an

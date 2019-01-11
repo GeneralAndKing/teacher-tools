@@ -56,6 +56,7 @@ module.exports = {
       .set('renderer@', resolve('src/renderer'))
       .set('_n', resolve('node_modules'))
       .set('renderer_c', resolve('src/renderer/components'))
+      .set('common@', resolve('src/common/'))
   },
   // 打包时不生成.map文件，减少体积，加快速度
   productionSourceMap: false,
