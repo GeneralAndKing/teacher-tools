@@ -12,7 +12,7 @@ module.exports = {
   pages: {
     app: {
       // entry for the page
-      entry: 'src/renderer/main.js',
+      entry: 'src/app/main.js',
       // the source template
       template: 'public/index.html',
       // output as dist/index.html
@@ -53,9 +53,8 @@ module.exports = {
   },
   chainWebpack: config => {
     config.resolve.alias
-      .set('renderer@', resolve('src/renderer'))
+      .set('app@', resolve('src/app'))
       .set('_n', resolve('node_modules'))
-      .set('renderer_c', resolve('src/renderer/components'))
       .set('common@', resolve('src/common/'))
   },
   // 打包时不生成.map文件，减少体积，加快速度
