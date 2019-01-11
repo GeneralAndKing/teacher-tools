@@ -2,6 +2,9 @@
 
 import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
+import { message } from './message'
+import JobServer from './jobServer/server'
+global.jobServer = new JobServer()
 const isDevelopment = process.env.NODE_ENV !== 'production'
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -18,27 +21,19 @@ function createWindow () {
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
-    win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
+    win.loadURL(process.env.WEBPACK_DEV_SERVER_URL + 'app.html')
     if (!process.env.IS_TEST) win.webContents.openDevTools()
   } else {
+    win.webContents.openDevTools()
     createProtocol('app')
     // Load the index.html when not in development
-    win.loadURL('app://./index.html')
+    win.loadURL('app://./app.html')
   }
 
   win.on('closed', () => {
     win = null
   })
 }
-
-// Quit when all windows are closed.
-app.on('window-all-closed', () => {
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
-})
 
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
@@ -56,24 +51,11 @@ app.on('ready', async () => {
   if (isDevelopment && !process.env.IS_TEST) {
     // BrowserWindow.addDevToolsExtension('/home/echo/.config/google-chrome/Default/Extensions/nhdogjmejiglipccpnnnanhbledajbpd/4.1.5_0')
     // BrowserWindow.addDevToolsExtension('_n/vue-devtools/vender')
-    require('vue-devtools').install()
+    // require('vue-devtools').install()
     // Install Vue Devtools
     // await installVueDevtools()
   }
   createWindow()
 })
 
-// Exit cleanly on request from parent process in development mode.
-if (isDevelopment) {
-  if (process.platform === 'win32') {
-    process.on('message', data => {
-      if (data === 'graceful-exit') {
-        app.quit()
-      }
-    })
-  } else {
-    process.on('SIGTERM', () => {
-      app.quit()
-    })
-  }
-}
+message()

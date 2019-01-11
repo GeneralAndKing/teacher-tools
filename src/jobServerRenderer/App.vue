@@ -3,7 +3,7 @@
     img(src='./assets/logo.png')
     div
       p
-        | If iView is successfully added to this project, you'll see an
+        | web端
         code(v-text="'<Button>'")
         |         below
       Button(type='primary') Button

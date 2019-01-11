@@ -9,7 +9,34 @@ module.exports = {
       }
     }
   },
+  pages: {
+    app: {
+      // entry for the page
+      entry: 'src/renderer/main.js',
+      // the source template
+      template: 'public/index.html',
+      // output as dist/index.html
+      filename: 'app.html'
+    }
+    // jobServer: {
+    //   // entry for the page
+    //   entry: 'src/jobServerRenderer/main.js',
+    //   // the source template
+    //   template: 'public/index.html',
+    //   // output as dist/index.html
+    //   filename: 'jobServer.html'
+    // },
+    // shareServer: {
+    //   // entry for the page
+    //   entry: 'src/shareServerRenderer/main.js',
+    //   // the source template
+    //   template: 'public/index.html',
+    //   // output as dist/index.html
+    //   filename: 'shareServer.html'
+    // }
+  },
   configureWebpack: config => {
+    console.log(config)
     //
   },
   pluginOptions: {
@@ -25,14 +52,10 @@ module.exports = {
     }
   },
   chainWebpack: config => {
-    config.entry('app').clear().add('./src/renderer/main.js')
-    config.entry('web').clear().add('./src/web/main.js')
     config.resolve.alias
       .set('renderer@', resolve('src/renderer'))
-      .set('web@', resolve('src/web'))
       .set('_n', resolve('node_modules'))
       .set('renderer_c', resolve('src/renderer/components'))
-      .set('web_c', resolve('src/web/components'))
   },
   // 打包时不生成.map文件，减少体积，加快速度
   productionSourceMap: false,
