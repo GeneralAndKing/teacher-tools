@@ -1,6 +1,6 @@
 <template lang="pug">
   #app
-    img(src='./assets/logo.png')
+    img(src='../common/assets/logo.png')
     div
       p
         | web端
