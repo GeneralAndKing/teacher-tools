@@ -14,7 +14,16 @@ let win
 protocol.registerStandardSchemes(['app'], { secure: true })
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({ width: 800, height: 600, frame: false })
+  win = new BrowserWindow(
+    {
+      width: 800,
+      height: 600,
+      frame: false,
+      minWidth: 800,
+      minHeight: 600,
+      transparent: true
+    }
+  )
   if (process.env.NODE_ENV === 'development') {
 
   }

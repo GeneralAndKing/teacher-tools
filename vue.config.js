@@ -56,6 +56,8 @@ module.exports = {
       .set('app@', resolve('src/app'))
       .set('_n', resolve('node_modules'))
       .set('common@', resolve('src/common/'))
+    const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+    types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
   },
   // 打包时不生成.map文件，减少体积，加快速度
   productionSourceMap: false,
@@ -64,4 +66,18 @@ module.exports = {
     // proxy: 'http://localhost:4000',
     disableHostCheck: true
   }
+}
+
+/**
+ * 全局 less 引入
+ * @param {*} rule 传递规则
+ */
+function addStyleResource (rule) {
+  rule.use('style-resource')
+    .loader('style-resources-loader')
+    .options({
+      patterns: [
+        path.resolve(__dirname, './src/common/theme/iview-variables.less')
+      ]
+    })
 }
