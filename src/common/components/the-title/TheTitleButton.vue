@@ -1,5 +1,5 @@
 <template lang="pug">
- Icon.gak-title-btn(v-bind:style="style", v-on:click="click", v-bind:type="icon", v-bind:id="type")
+  Icon.gak-title-btn(v-bind:style="style", v-on:click="click", v-bind:type="icon", v-bind:id="type")
 
 </template>
 
@@ -44,17 +44,21 @@ export default {
 </script>
 
 <style scoped lang="less">
+* {
+  transition: all 0.5s;
+}
 .gak-title-btn {
   -webkit-app-region: no-drag;
-  width: 18px;
-  height: 20px;
+  width: @gak-title-height * 1.2;
   font-size: 20px;
-  margin: 1px;
+  color: @gak-text-color-no-active;
+  text-align: center;
+  padding: 4px;
   cursor: pointer;
   &:hover {
     background: rgb(107, 106, 106);
+    color: @gak-text-color-active;
   }
-
 }
 #close {
   &:hover{

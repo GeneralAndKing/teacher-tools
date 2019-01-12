@@ -9,8 +9,15 @@ found in https://github.com/iview/iview/blob/2.0/src/styles/custom.less.
 @primary-color: #3C3C3C;
 
 
-// gak variables
-@gak-title-height: 25px;
+/*
+gak variables
+*/
+
+// text variables
+@gak-text-color-no-active: rgb(143, 143, 143);
+@gak-text-color-active: rgb(255, 246, 246);
+
+@gak-title-height: 30px;
 
 .gak-text-left {
   text-align: left;
@@ -20,6 +27,10 @@ found in https://github.com/iview/iview/blob/2.0/src/styles/custom.less.
   text-align: right;
 }
 
-.gak-text-center{
+.gak-text-center {
   text-align: center;
+}
+
+.gak-text-color-no-active {
+  color: @gak-text-color-no-active;
 }
