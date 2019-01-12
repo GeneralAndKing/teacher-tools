@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 // from表单中间件
-const mutipart = require('connect-multiparty')
+// const multer  = require('multer');
 const fs = require('fs')
 const path = require('path')
 // 设置上传文件保存的路径
-router.use(mutipart({ uploadDir: './upload/temp' }))
+// router.use(multer({ uploadDir: './upload/temp' }))
 let mkdirsSync = function (dirname, mode) {
   if (fs.existsSync(dirname)) {
     return true

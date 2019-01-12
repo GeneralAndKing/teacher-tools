@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "connect-multiparty": "^2.2.0",
     "express": "^4.16.4",
     "nedb": "^1.8.0",
     "socker.io": "0.0.0-alpha-beta"

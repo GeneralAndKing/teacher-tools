@@ -1,6 +1,7 @@
 <template lang="pug">
   #app
     TheTitle
+    TheMessage
     #gak-body
       img(src='../common/assets/logo.png')
       div
@@ -16,12 +17,14 @@
 <script>
 import HelloWorld from 'app@/components/HelloWorld.vue'
 import TheTitle from 'common@/components/the-title'
+import TheMessage from 'app@/components/The-Message'
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
-    TheTitle
+    TheTitle,
+    TheMessage
   }
 }
 </script>

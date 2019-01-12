@@ -17,7 +17,7 @@ module.exports = {
       template: 'public/index.html',
       // output as dist/index.html
       filename: 'app.html'
-    }
+    },
     // jobServer: {
     //   // entry for the page
     //   entry: 'src/jobServerRenderer/main.js',
@@ -26,17 +26,17 @@ module.exports = {
     //   // output as dist/index.html
     //   filename: 'jobServer.html'
     // },
-    // shareServer: {
-    //   // entry for the page
-    //   entry: 'src/shareServerRenderer/main.js',
-    //   // the source template
-    //   template: 'public/index.html',
-    //   // output as dist/index.html
-    //   filename: 'shareServer.html'
-    // }
+    IM: {
+      // entry for the page
+      entry: 'src/IM/main.js',
+      // the source template
+      template: 'public/index.html',
+      // output as dist/index.html
+      filename: 'IM.html'
+    }
   },
   configureWebpack: config => {
-    console.log(config)
+    // console.log(config)
     //
   },
   pluginOptions: {
@@ -56,6 +56,7 @@ module.exports = {
       .set('app@', resolve('src/app'))
       .set('_n', resolve('node_modules'))
       .set('common@', resolve('src/common/'))
+      .set('IM@',resolve('src/IM/'))
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
     types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
   },
