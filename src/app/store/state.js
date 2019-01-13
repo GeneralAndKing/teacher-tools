@@ -1,5 +1,6 @@
 const state = {
-  appName: 'help-teacher'
+  appName: 'help-teacher',
+  leftMenuVisible: true
 }
 
 export default state
