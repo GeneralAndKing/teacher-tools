@@ -24,8 +24,8 @@ export default {
         this.chunks.push(e.data)
       }
       mediaRecorder.onstop = function (e) {
-        let blob = new Blob(this.chunks, { 'type': 'audio/ogg; codecs=opus' })
-        socket.emit('radio', blob)
+        // let blob = new Blob(this.chunks, { 'type': 'audio/ogg; codecs=opus' })
+        // socket.emit('radio', blob)
       }
 
       // Start recording
@@ -44,13 +44,13 @@ export default {
       getVideo(sources[0]).then(handleStream).catch(handleError)
     })
     // When the client receives a voice message it will play the sound
-    socket.on('voice', function (arrayBuffer) {
-      let blob = new Blob([arrayBuffer], { 'type': 'audio/ogg; codecs=opus' })
+    // socket.on('voice', function (arrayBuffer) {
+    //   let blob = new Blob([arrayBuffer], { 'type': 'audio/ogg; codecs=opus' })
 
-      const video = document.querySelector('video')
-      video.srcObject = blob
-      video.onloadedmetadata = (e) => video.play()
-    })
+    //   const video = document.querySelector('video')
+    //   video.srcObject = blob
+    //   video.onloadedmetadata = (e) => video.play()
+    // })
   }
 
 }
