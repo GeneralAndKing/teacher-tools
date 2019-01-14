@@ -15,7 +15,7 @@ socketio.getSocketio = function (server) { // http(s) server
       // 当前在线人数加一
       clientCount++
       // 广播当前在线人数
-      io.emit('clientNum', clientCount)
+      io.emit('clientCount', clientCount)
 
       socket.username = data
       // 给所有client广播消息（包括当前socket本身）
@@ -32,7 +32,7 @@ socketio.getSocketio = function (server) { // http(s) server
       // 当前用户减一
       clientCount--
       // 广播当前用户人数
-      io.emit('clientNum', clientCount)
+      io.emit('clientCount', clientCount)
       // 广播用户断开下线
       socket.broadcast.emit('offline', socket.username)
       console.log(socket.username + ' 下线了~')
