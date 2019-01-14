@@ -84,27 +84,18 @@ function getPages () {
   } else {
     return {
       app: {
-        // entry for the page
         entry: 'src/app/main.js',
-        // the source template
         template: 'public/index.html',
-        // output as dist/index.html
         filename: 'app.html'
       },
       communication: {
-        // entry for the page
         entry: 'src/communication/main.js',
-        // the source template
         template: 'public/index.html',
-        // output as dist/index.html
         filename: 'communication.html'
       },
       forms: {
-        // entry for the page
         entry: 'src/forms/main.js',
-        // the source template
         template: 'public/index.html',
-        // output as dist/index.html
         filename: 'forms.html'
       }
     }
