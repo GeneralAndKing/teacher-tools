@@ -50,6 +50,7 @@
     "iview": "^3.2.1",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "morgan": "^1.9.1",
     "normalize.css": "^8.0.1",
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
