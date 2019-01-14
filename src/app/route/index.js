@@ -1,10 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './router'
+import iView from 'iview'
 
 Vue.use(Router)
 
-export default new Router({
-  mode: 'history',
+const router = new Router({
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  iView.LoadingBar.start()
+  next()
+})
+
+router.afterEach((to, from) => {
+  iView.LoadingBar.finish()
+})
+
+export default router

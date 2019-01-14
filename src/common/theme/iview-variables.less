@@ -6,9 +6,9 @@ found in https://github.com/iview/iview/blob/2.0/src/styles/custom.less.
 @import '~iview/src/styles/index.less';
 
 // iview variables
-@primary-color: #3C3C3C;
-
-
+@primary-color: rgb(68, 68, 68);
+@background-color: #252526;
+@gak-text-color: rgb(255, 246, 246);
 /*
 gak variables
 */
@@ -18,7 +18,7 @@ gak variables
 @gak-text-color-active: rgb(255, 246, 246);
 @gak-text-color-bg-active: rgb(107, 106, 106);
 @gak-text-normal: 20px;
-
+@gak-no-visible: rgba(0, 0, 0, 0);
 
 @gak-title-height: 30px;
 
@@ -39,13 +39,17 @@ gak variables
   color: @gak-text-color-no-active;
 }
 
+.gak-bg-no-visible {
+  background-color: @gak-no-visible;
+}
+
 .gak-title-btn {
   .gak-text-center;
   .gak-text-color-no-active;
   -webkit-app-region: no-drag;
   width: @gak-title-height * 1.2;
+  line-height: @gak-title-height + 1px;
   font-size: @gak-text-normal;
-  padding: 4px;
   cursor: pointer;
   transition: all 0.5s;
   &:hover {
@@ -63,16 +67,21 @@ gak variables
   &::-webkit-scrollbar {
     width: 8px;
     height: 4px;
-    background-color: #F5F5F5;
+    cursor: pointer;
+    .gak-bg-no-visible;
   }
   /*定义滚动条轨道 内阴影+圆角*/
   &::-webkit-scrollbar-track {
     border: none;
-    background-color: rgba(0, 0, 0, 0);
+    .gak-bg-no-visible;
   }
   /*定义滑块 内阴影+圆角*/
   &::-webkit-scrollbar-thumb{
     border-radius: 10px;
     background-color: rgba(110, 110, 110, 0.2);
   }
+}
+
+.gak-bg-color {
+  background-color: @background-color;
 }

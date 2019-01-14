@@ -7,10 +7,8 @@ export default {
   props: {},
   mounted: function () {
     ipcRenderer.on('closeWebServer', (event, arg) => {
-      console.log('测试')
     })
     ipcRenderer.on('compress', message => {
-      console.log('测试')
     })
   }
 }
