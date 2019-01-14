@@ -3,11 +3,17 @@
 import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import { message } from './message'
+import { fork } from 'child_process'
+import { getUserDataPath, getExtensionsPath } from './config'
 const isDevelopment = process.env.NODE_ENV !== 'production'
+// const cp = require('child_process')
+// const path = require('path')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
-
+app.setPath('userData', getUserDataPath())
+// app.setPath('extensions', getExtensionsPath())
+// 只有使用fork才可以使用message事件和send()方法
 // Standard scheme must be registered before the app is ready
 protocol.registerStandardSchemes(['app'], { secure: true })
 function createWindow () {
@@ -19,7 +25,8 @@ function createWindow () {
       frame: false,
       minWidth: 800,
       minHeight: 600,
-      transparent: true
+      transparent: true,
+      backgroundColor: '#6B6A6A'
     }
   )
   if (process.env.NODE_ENV === 'development') {
@@ -34,7 +41,7 @@ function createWindow () {
     win.webContents.openDevTools()
     createProtocol('app')
     // Load the index.html when not in development
-    win.loadURL('app://./app.html')
+    win.loadURL('app://./IM.html')
   }
 
   win.on('closed', () => {

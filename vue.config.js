@@ -18,13 +18,21 @@ module.exports = {
       // output as dist/index.html
       filename: 'app.html'
     },
-    // jobServer: {
+    // server: {
     //   // entry for the page
-    //   entry: 'src/jobServerRenderer/main.js',
+    //   entry: 'src/server/main.js',
     //   // the source template
     //   template: 'public/index.html',
     //   // output as dist/index.html
-    //   filename: 'jobServer.html'
+    //   filename: 'server.html'
+    // },
+    // serverWeb: {
+    //   // entry for the page
+    //   entry: 'src/serverWeb/main.js',
+    //   // the source template
+    //   template: 'public/index.html',
+    //   // output as dist/index.html
+    //   filename: 'common/serverWeb.html'
     // },
     IM: {
       // entry for the page
@@ -34,6 +42,14 @@ module.exports = {
       // output as dist/index.html
       filename: 'IM.html'
     }
+    // IMWeb: {
+    //   // entry for the page
+    //   entry: 'src/IMWeb/main.js',
+    //   // the source template
+    //   template: 'public/index.html',
+    //   // output as dist/index.html
+    //   filename: 'common/IMWeb.html'
+    // }
   },
   configureWebpack: config => {
     // console.log(config)
@@ -41,6 +57,15 @@ module.exports = {
   },
   pluginOptions: {
     electronBuilder: {
+      builderOptions: {
+        files: [
+          {
+            'filter': ['**/*']
+          }
+        ],
+        extraFiles: ['./extensions/'],
+        asar: false
+      },
       chainWebpackRendererProcess: config => {
       },
       mainProcessFile: 'src/main/main.js',
@@ -56,7 +81,11 @@ module.exports = {
       .set('app@', resolve('src/app'))
       .set('_n', resolve('node_modules'))
       .set('common@', resolve('src/common/'))
-      .set('IM@',resolve('src/IM/'))
+      .set('IM@', resolve('src/IM/'))
+      .set('IMWeb@', resolve('src/IMWeb/'))
+      .set('server@', resolve('src/server/'))
+      .set('serverWev@', resolve('src/serverWev/'))
+      .set('extensions@', resolve('./extensions/'))
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
     types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
   },
