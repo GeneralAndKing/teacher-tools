@@ -26,8 +26,8 @@
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
     "test:unit": "vue-cli-service test:unit",
-    "IMWeb:serve": "vue-cli-service serve --name renderer ./src/IMWeb/main.js",
-    "IMWeb:build": "vue-cli-service build --name renderer ./src/IM/main.js --dest ./extensions/IMServer/dist"
+    "web:serve": "cross-env MODE=web vue-cli-service serve",
+    "web:build": "cross-env MODE=web vue-cli-service build --dest ./extensions/dist"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -44,6 +44,7 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-eslint": "^10.0.1",
     "chai": "^4.1.2",
+    "cross-env": "^5.2.0",
     "electron": "^4.0.1",
     "electron-debug": "^2.0.0",
     "electron-devtools-installer": "^2.2.4",

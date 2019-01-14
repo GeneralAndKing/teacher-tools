@@ -8,8 +8,8 @@
 
 <script>
 import TheTitle from 'common@/components/the-title'
-import TheMessage from 'IM@/components/The-Message'
-import TheScreen from 'IM@/components/The-Screen'
+import TheMessage from 'client@/components/The-Message'
+import TheScreen from 'client@/components/The-Screen'
 export default {
   name: 'app',
   components: {

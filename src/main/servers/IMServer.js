@@ -11,7 +11,7 @@ export default class IMServer {
 
   start (ip, port) {
     if (!this.status) {
-      this.child = fork(path.join(process.env.ENTENSIONS, 'IMServer'))
+      this.child = fork(path.join(process.env.ENTENSIONS, 'communicationServer'))
       this.ip = ip
       this.port = port
       this.status = true

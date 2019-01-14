@@ -3,7 +3,7 @@ import path from 'path'
 export default class JobServer {
   constructor (closeCallBack, compressCallBack) {
     // console.log(NODE.env)
-    // this.app = cp.fork(path.join(__static, 'app'), [], { env: process.env })
+    this.child = fork(path.join(process.env.ENTENSIONS, 'formsServer'))
     console.log(this.app)
     this.app = require('./app')
     this.http = require('http')

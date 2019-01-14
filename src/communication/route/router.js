@@ -1,4 +1,4 @@
-// import Index from 'IM@/views/Index.vue'
+// import Index from 'communication@/views/Index.vue'
 export default [
   // {
   //   path: '/',
