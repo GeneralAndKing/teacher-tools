@@ -1,14 +1,6 @@
 <template lang="pug">
   #app
     img(src='../common/assets/logo.png')
-    div
-      p
-        | web端
-        code(v-text="'<Button>'")
-        |         below
-      Button(type='primary') Button
-    HelloWorld(msg='Welcome to Your Vue.js App')
-
 </template>
 
 <script>

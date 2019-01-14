@@ -15,6 +15,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'dist')))
+
 app.use('/', routes)
 
 // catch 404 and forward to error handler
