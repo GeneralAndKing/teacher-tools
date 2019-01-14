@@ -1,14 +1,18 @@
 <template lang="pug">
   #app
-    TheTitle(:len="6")
-      Dropdown(trigger="click", slot)
-        a(href="javascript:void(0)")
-          Icon(type="ios-list")
-        DropdownMenu(slot="list")
-          template(v-for="item in menu")
-            DropdownItem {{ item.name }}
+    TheTitle
+      template(slot="left")
+        Icon.gak-title-btn(type="ios-list", @click="handleChangeLeftMenu")
+      template(slot="right")
+        Dropdown.gak-text-center(trigger="click")
+          a(href="javascript:void(0)")
+            Icon(type="md-person")
+          DropdownMenu(slot="list")
+            template(v-for="item in menu")
+              DropdownItem {{ item.name }}
     TheMessage
-    #gak-body
+    .gak-scroll#gak-body
+      TheSide(:menu="leftMenu")
       img(src='../common/assets/logo.png')
       div
         p
@@ -17,13 +21,15 @@
           |         below
         Button(type='primary') Button
       HelloWorld(msg='Welcome to Your Vue.js App')
+      HelloWorld(msg='Welcome to Your Vue.js App')
         h1 test
 
 </template>
 
 <script>
-import HelloWorld from 'app@/components/HelloWorld.vue'
 import TheTitle from 'common@/components/the-title'
+import TheSide from 'common@/components/the-side'
+import HelloWorld from 'app@/components/HelloWorld.vue'
 import TheMessage from 'app@/components/The-Message'
 
 export default {
@@ -33,26 +39,57 @@ export default {
       menu: [
         {
           name: '登录'
-        },
-        {
+        }, {
           name: '注册'
-        },
-        {
+        }, {
           name: '设置'
-        },
-        {
+        }, {
           name: '帮助'
-        },
-        {
+        }, {
           name: '关于'
         }
+      ],
+      leftMenuVisable: false,
+      leftMenu: [
+        {
+          name: '主页',
+          to: 'about',
+          icon: 'md-home'
+        }, {
+          name: '班级管理',
+          to: 'about',
+          icon: 'md-home'
+        }, {
+          name: '作业管理',
+          to: 'about',
+          icon: 'md-home'
+        }, {
+          name: '作业收取',
+          to: 'about',
+          icon: 'md-home'
+        }, {
+          name: '屏幕共享',
+          to: 'about',
+          icon: 'md-home'
+        }, {
+          name: '其它工具',
+          to: 'about',
+          icon: 'md-home'
+        }
+
       ]
     }
   },
   components: {
     HelloWorld,
     TheTitle,
-    TheMessage
+    TheMessage,
+    TheSide
+  },
+  methods: {
+    handleChangeLeftMenu: function () {
+      this.$store.commit('SET_LEFT_MENU_VISIBLE')
+    }
   }
 }
 </script>
@@ -60,14 +97,20 @@ export default {
 <style lang="less">
 * {
   -webkit-user-select:none;
-   user-select:none;
 }
+
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100%;
   .ivu-dropdown-rel {
     -webkit-app-region: no-drag;
     transition: all 0.5s;
@@ -87,7 +130,8 @@ export default {
     }
   }
   #gak-body {
-    padding-top: 25px;
+    margin-top: @gak-title-height;
+    height: calc(100% - @gak-title-height);
   }
 }
 </style>

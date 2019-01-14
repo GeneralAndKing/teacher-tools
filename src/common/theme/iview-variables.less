@@ -16,9 +16,13 @@ gak variables
 // text variables
 @gak-text-color-no-active: rgb(143, 143, 143);
 @gak-text-color-active: rgb(255, 246, 246);
+@gak-text-color-bg-active: rgb(107, 106, 106);
+@gak-text-normal: 20px;
+
 
 @gak-title-height: 30px;
 
+// global class
 .gak-text-left {
   text-align: left;
 }
@@ -33,4 +37,42 @@ gak variables
 
 .gak-text-color-no-active {
   color: @gak-text-color-no-active;
+}
+
+.gak-title-btn {
+  .gak-text-center;
+  .gak-text-color-no-active;
+  -webkit-app-region: no-drag;
+  width: @gak-title-height * 1.2;
+  font-size: @gak-text-normal;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    background-color: @gak-text-color-bg-active;
+    color: @gak-text-color-active;
+  }
+}
+
+
+.gak-scroll {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 4px;
+    background-color: #F5F5F5;
+  }
+  /*定义滚动条轨道 内阴影+圆角*/
+  &::-webkit-scrollbar-track {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  /*定义滑块 内阴影+圆角*/
+  &::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: rgba(110, 110, 110, 0.2);
+  }
 }
