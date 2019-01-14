@@ -58,7 +58,7 @@
     "vue-cli-plugin-iview": "^1.0.6",
     "vue-devtools": "^5.0.0-beta.1",
     "vue-router": "^3.0.1",
-    "vue-socket.io": "^3.0.4",
+    "vue-socket.io-extended": "^3.2.0",
     "vue-template-compiler": "^2.5.21",
     "vuex": "^3.0.1"
   },

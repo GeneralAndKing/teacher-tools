@@ -1,5 +1,5 @@
 <template lang="pug">
-  Drawer.gak-text-left#gak-side(placement="left", v-model="visible", @on-close="handleChangeVisible")
+  Drawer.gak-text-left#gak-side(placement="left", v-model="visible")
     Menu(active-name="1")
       template(v-for="item in menu")
         MenuItem(:name="item.name", :to="item.to")
@@ -22,16 +22,11 @@ export default {
   computed: {
     visible: {
       set: function () {
-        //
+        this.$store.commit('SET_LEFT_MENU_VISIBLE')
       },
       get: function () {
         return this.$store.state.leftMenuVisible
       }
-    }
-  },
-  methods: {
-    handleChangeVisible: function () {
-      this.$store.commit('SET_LEFT_MENU_VISIBLE')
     }
   }
 }

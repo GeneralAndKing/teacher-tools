@@ -1,21 +1,41 @@
 <template lang="pug">
   #app
     TheTitle
-    #gak-body
-      TheScreen
+    Row#gak-body
+      Col(span="14") a
+      Col(span="10") b
 
 </template>
 
 <script>
 import TheTitle from 'common@/components/the-title'
-import TheMessage from 'communication@/components/The-Message'
-import TheScreen from 'communication@/components/The-Screen'
+import TheMessage from 'communication@/components/the-message'
+import TheScreen from 'communication@/components/the-screen'
+import { mapState } from 'vuex'
 export default {
   name: 'app',
   components: {
     TheTitle,
     TheMessage,
     TheScreen
+  },
+  computed: {
+    ...mapState([
+      'online'
+    ])
+  },
+  mounted: function () {
+
+  },
+  sockets: {
+    clientCount (count) {
+      console.log(count)
+    }
+  },
+  methods: {
+    handleVoice: function () {
+      this.$socket.emit('voice')
+    }
   }
 }
 </script>
@@ -29,7 +49,7 @@ export default {
   color: #2c3e50;
 
   #gak-body {
-    padding-top: 25px;
+    padding-top: @gak-title-height;
   }
 }
 </style>

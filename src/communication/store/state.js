@@ -1,5 +1,5 @@
 const state = {
-  appName: 'help-teacher'
+  online: false
 }
 
 export default state
