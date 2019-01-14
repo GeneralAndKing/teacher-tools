@@ -6,12 +6,6 @@ socketio.getSocketio = function (server) { // http(s) server
   let io = socketIO.listen(server)
   io.sockets.on('connection', function (socket) {
     console.log('连接成功')
-<<<<<<< HEAD
-    socket.on('voice', function (blob) {
-      console.log(blob)
-      // can choose to broadcast it to whoever you want
-      socket.broadcast.emit('voice', blob)
-=======
     socket.on('sendRadio', function (blob) {
       console.log(blob)
       socket.emit('receiRadio', blob)
@@ -42,7 +36,6 @@ socketio.getSocketio = function (server) { // http(s) server
       // 广播用户断开下线
       socket.broadcast.emit('offline', socket.username)
       console.log(socket.username + ' 下线了~')
->>>>>>> 5edec91e1aa7a23e7dcaa5c6cb232679a8d026d7
     })
 
     socket.on('online', function (data) {

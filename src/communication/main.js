@@ -4,23 +4,9 @@ import router from './route'
 import store from './store'
 import 'normalize.css'
 import 'common@/plugins/iview.js'
-<<<<<<< HEAD
 import $socket from './lib/socket-instance'
 import VueSocketio from 'vue-socket.io-extended'
 
-=======
-import VueSocketIO from 'vue-socket.io'
-
-Vue.use(new VueSocketIO({
-  debug: true,
-  connection: 'http://localhost:33333',
-  vuex: {
-    store,
-    actionPrefix: 'SOCKET_',
-    mutationPrefix: 'SOCKET_'
-  }
-}))
->>>>>>> 5edec91e1aa7a23e7dcaa5c6cb232679a8d026d7
 Vue.config.devtools = true
 Vue.config.productionTip = false
 
