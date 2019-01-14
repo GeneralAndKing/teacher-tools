@@ -4,12 +4,14 @@
 
 const http = require('http')
 const app = require('./app')
+const { getSocketio } = require('./socketio')
 
 /**
  * Get port from environment and store in Express.
  */
 
-let port = normalizePort(process.env.PORT || '33333')
+// let port = normalizePort(process.env.PORT || '33333')
+let port = normalizePort('33333')
 app.set('port', port)
 
 /**
@@ -17,7 +19,7 @@ app.set('port', port)
  */
 
 let server = http.createServer(app)
-
+getSocketio(server)
 /**
  * Listen on provided port, on all network interfaces.
  */

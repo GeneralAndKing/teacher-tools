@@ -19,7 +19,6 @@ global.IMserver.start()
 // app.setPath('extensions', getExtensionsPath())
 // 只有使用fork才可以使用message事件和send()方法
 // Standard scheme must be registered before the app is ready
-protocol.registerStandardSchemes(['app'], { secure: true })
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow(
@@ -43,6 +42,7 @@ function createWindow () {
     if (!process.env.IS_TEST) win.webContents.openDevTools()
   } else {
     win.webContents.openDevTools()
+    protocol.registerStandardSchemes(['app'], { secure: true })
     createProtocol('app')
     // Load the index.html when not in development
     win.loadURL('app://./app.html')

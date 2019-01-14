@@ -5,7 +5,9 @@ import store from './store'
 import 'normalize.css'
 import 'common@/plugins/iview.js'
 import VueSocketio from 'vue-socket.io'
-Vue.use(VueSocketio, 'http://locahost:33333')
+import socketio from 'socket.io-client'
+
+Vue.use(VueSocketio, socketio('http://localhost:33333/'), store)
 Vue.config.devtools = true
 Vue.config.productionTip = false
 
