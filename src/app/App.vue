@@ -1,5 +1,5 @@
 <template lang="pug">
-  #app
+  #app.gak-bg-color
     TheTitle
       template(slot="left")
         Icon.gak-title-btn(type="ios-list", @click="handleChangeLeftMenu")
@@ -11,25 +11,16 @@
             template(v-for="item in menu")
               DropdownItem {{ item.name }}
     TheMessage
-    .gak-scroll#gak-body
-      TheSide(:menu="leftMenu")
-      img(src='../common/assets/logo.png')
-      div
-        p
-          | If iView is successfully added to this project, you'll see an app
-          code(v-text="'<Button>'")
-          |         below
-        Button(type='primary') Button
-      HelloWorld(msg='Welcome to Your Vue.js App')
-      HelloWorld(msg='Welcome to Your Vue.js App')
-        h1 test
+    TheSide(:menu="leftMenu")
+    transition(name="fade")
+      keep-alive
+        router-view.gak-scroll#gak-body
 
 </template>
 
 <script>
 import TheTitle from 'common@/components/the-title'
 import TheSide from 'common@/components/the-side'
-import HelloWorld from 'app@/components/HelloWorld.vue'
 import TheMessage from 'app@/components/The-Message'
 
 export default {
@@ -53,7 +44,7 @@ export default {
       leftMenu: [
         {
           name: '主页',
-          to: 'about',
+          to: 'home',
           icon: 'md-home'
         }, {
           name: '班级管理',
@@ -81,7 +72,6 @@ export default {
     }
   },
   components: {
-    HelloWorld,
     TheTitle,
     TheMessage,
     TheSide
@@ -109,13 +99,14 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: @gak-text-color;
   height: 100%;
   .ivu-dropdown-rel {
     -webkit-app-region: no-drag;
     transition: all 0.5s;
     text-align: center;
     .ivu-icon {
+      transition: all 0.5s;
       color: @gak-text-color-no-active;
       font-size: 20px;
       width: @gak-title-height * 1.2;

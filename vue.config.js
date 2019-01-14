@@ -56,7 +56,8 @@ module.exports = {
       .set('app@', resolve('src/app'))
       .set('_n', resolve('node_modules'))
       .set('common@', resolve('src/common/'))
-      .set('IM@',resolve('src/IM/'))
+      .set('IM@', resolve('src/IM/'))
+      .set('server@', resolve('src/server/'))
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
     types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
   },

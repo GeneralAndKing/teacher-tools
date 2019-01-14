@@ -1,5 +1,5 @@
 <template lang="pug">
-  Drawer.gak-text-left#gak-side(placement="left", :closable="false", v-model="visible", @on-close="handleChangeVisible")
+  Drawer.gak-text-left#gak-side(placement="left", v-model="visible", @on-close="handleChangeVisible")
     Menu(active-name="1")
       template(v-for="item in menu")
         MenuItem(:name="item.name", :to="item.to")
