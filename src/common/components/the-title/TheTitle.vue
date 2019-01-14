@@ -7,7 +7,7 @@
     Col.gak-text-right(span="8")
       slot(name="right")
       TheTitleButton(type="min", icon="ios-remove")
-      TheTitleButton(type="max", icon="ios-browsers-outline")
+      TheTitleButton(type="max", icon="ios-add")
       TheTitleButton(type="close", icon="ios-close")
 </template>
 
