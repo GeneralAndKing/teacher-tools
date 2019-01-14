@@ -3,16 +3,16 @@
 import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import { message, appMessage } from './message'
-import { getUserDataPath, getExtensionsPath } from './config'
 import IMServer from './servers/IMServer'
+import path from 'path'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 // const cp = require('child_process')
 // const path = require('path')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
-process.env.USER_DATA = getUserDataPath()
-process.env.ENTENSIONS = getExtensionsPath()
+process.env.USER_DATA = path.join(process.cwd(), 'user-data')
+process.env.ENTENSIONS = path.join(process.cwd(), 'extensions')
 global.IMserver = new IMServer()
 global.TASKserver = null
 global.IMserver.start()
@@ -39,13 +39,13 @@ function createWindow () {
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
-    win.loadURL(process.env.WEBPACK_DEV_SERVER_URL + 'app.html')
+    win.loadURL(process.env.WEBPACK_DEV_SERVER_URL + 'communication.html')
     if (!process.env.IS_TEST) win.webContents.openDevTools()
   } else {
     win.webContents.openDevTools()
     createProtocol('app')
     // Load the index.html when not in development
-    win.loadURL('app://./IM.html')
+    win.loadURL('app://./app.html')
   }
 
   win.on('closed', () => {
