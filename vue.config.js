@@ -52,8 +52,7 @@ module.exports = {
     // }
   },
   configureWebpack: config => {
-    // console.log(config)
-    //
+    console.log(config)
   },
   pluginOptions: {
     electronBuilder: {

@@ -1,6 +1,6 @@
-const { app } = require('electron')
+const { app, ipcMain } = require('electron')
 const isDevelopment = process.env.NODE_ENV !== 'production'
-export function message () {
+function message () {
   app.on('window-all-closed', () => {
     // On macOS it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
@@ -22,4 +22,21 @@ export function message () {
       })
     }
   }
+}
+function appMessage (win) {
+  ipcMain.on('min', e => {
+    win.minimize()
+  })
+  ipcMain.on('max', e => {
+    win.maximize()
+  })
+  ipcMain.on('restore', e => {
+    win.restore()
+  })
+  ipcMain.on('close', e => {
+    win.close()
+  })
+}
+export {
+  message, appMessage
 }

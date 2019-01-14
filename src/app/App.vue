@@ -21,7 +21,6 @@
           |         below
         Button(type='primary') Button
       HelloWorld(msg='Welcome to Your Vue.js App')
-      HelloWorld(msg='Welcome to Your Vue.js App')
         h1 test
 
 </template>
