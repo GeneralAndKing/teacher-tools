@@ -8,51 +8,9 @@ module.exports = {
       }
     }
   },
+  pages: getPages(),
   assetsDir: 'common',
-  pages: {
-    app: {
-      // entry for the page
-      entry: 'src/app/main.js',
-      // the source template
-      template: 'public/index.html',
-      // output as dist/index.html
-      filename: 'app.html'
-    },
-    // server: {
-    //   // entry for the page
-    //   entry: 'src/server/main.js',
-    //   // the source template
-    //   template: 'public/index.html',
-    //   // output as dist/index.html
-    //   filename: 'server.html'
-    // },
-    // serverWeb: {
-    //   // entry for the page
-    //   entry: 'src/serverWeb/main.js',
-    //   // the source template
-    //   template: 'public/index.html',
-    //   // output as dist/index.html
-    //   filename: 'common/serverWeb.html'
-    // },
-    IM: {
-      // entry for the page
-      entry: 'src/IM/main.js',
-      // the source template
-      template: 'public/index.html',
-      // output as dist/index.html
-      filename: 'IM.html'
-    }
-    // IMWeb: {
-    //   // entry for the page
-    //   entry: 'src/IMWeb/main.js',
-    //   // the source template
-    //   template: 'public/index.html',
-    //   // output as dist/index.html
-    //   filename: 'common/IMWeb.html'
-    // }
-  },
   configureWebpack: config => {
-    console.log(config)
   },
   pluginOptions: {
     electronBuilder: {
@@ -80,11 +38,9 @@ module.exports = {
       .set('app@', resolve('src/app'))
       .set('_n', resolve('node_modules'))
       .set('common@', resolve('src/common/'))
-      .set('IM@', resolve('src/IM/'))
-      .set('IMWeb@', resolve('src/IMWeb/'))
-      .set('server@', resolve('src/server/'))
-      .set('serverWev@', resolve('src/serverWev/'))
-      .set('extensions@', resolve('./extensions/'))
+      .set('communication@', resolve('src/communication/'))
+      .set('form@', resolve('src/form/'))
+      .set('client@', resolve('src/client/'))
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
     types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
   },
@@ -109,4 +65,48 @@ function addStyleResource (rule) {
         path.resolve(__dirname, './src/common/theme/iview-variables.less')
       ]
     })
+}
+/**
+ * 根据MODE选择对应的pages进行打包
+ */
+function getPages () {
+  if (process.env.MODE === 'web') {
+    return {
+      client: {
+        // entry for the page
+        entry: 'src/clinet/main.js',
+        // the source template
+        template: 'public/index.html',
+        // output as dist/index.html
+        filename: 'index.html'
+      }
+    }
+  } else {
+    return {
+      app: {
+        // entry for the page
+        entry: 'src/app/main.js',
+        // the source template
+        template: 'public/index.html',
+        // output as dist/index.html
+        filename: 'app.html'
+      },
+      communication: {
+        // entry for the page
+        entry: 'src/communication/main.js',
+        // the source template
+        template: 'public/index.html',
+        // output as dist/index.html
+        filename: 'communication.html'
+      },
+      forms: {
+        // entry for the page
+        entry: 'src/forms/main.js',
+        // the source template
+        template: 'public/index.html',
+        // output as dist/index.html
+        filename: 'forms.html'
+      }
+    }
+  }
 }

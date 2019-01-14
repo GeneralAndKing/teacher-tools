@@ -4,7 +4,7 @@ import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import { message, appMessage } from './message'
 import { getUserDataPath, getExtensionsPath } from './config'
-import IMServer from './IMServer'
+import IMServer from './servers/IMServer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 // const cp = require('child_process')
 // const path = require('path')
@@ -15,7 +15,7 @@ process.env.USER_DATA = getUserDataPath()
 process.env.ENTENSIONS = getExtensionsPath()
 global.IMserver = new IMServer()
 global.TASKserver = null
-
+global.IMserver.start()
 // app.setPath('extensions', getExtensionsPath())
 // 只有使用fork才可以使用message事件和send()方法
 // Standard scheme must be registered before the app is ready
