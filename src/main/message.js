@@ -28,10 +28,7 @@ function appMessage (win) {
     win.minimize()
   })
   ipcMain.on('max', e => {
-    win.maximize()
-  })
-  ipcMain.on('restore', e => {
-    win.restore()
+    win.isMaximized() ? win.unmaximize() : win.maximize()
   })
   ipcMain.on('close', e => {
     win.close()
