@@ -17,9 +17,9 @@ socketio.getSocketio = function (server) { // http(s) server
       // 广播当前在线人数
       io.emit('clientCount', clientCount)
 
-      socket.username = data
+      socket.username = data.username
       // 给所有client广播消息（包括当前socket本身）
-      io.emit('online', data)
+      io.emit('online', data.username)
       console.log('user : ' + socket.username + ' connected!')
     })
     // 接收用户发送的消息
@@ -43,9 +43,9 @@ socketio.getSocketio = function (server) { // http(s) server
       clientCount++
       // 广播当前在线人数
       io.emit('clientCount', clientCount)
-      socket.username = data
+      socket.username = data.username
       // 给所有client广播消息（包括当前socket本身）
-      io.emit('online', data)
+      io.emit('online', data.username)
       console.log('user : ' + socket.username + ' connected!')
     })
     // 接收用户发送的消息

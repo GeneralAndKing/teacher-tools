@@ -67,22 +67,21 @@ function addStyleResource (rule) {
     })
 }
 /**
- * 根据MODE选择对应的pages进行打包
+ * 根据 MODE 选择对应的 pages 进行打包
  */
 function getPages () {
-  if (process.env.MODE === 'web') {
-    return {
+  return process.env.MODE === 'web'
+    ? {
       client: {
         // entry for the page
-        entry: 'src/clinet/main.js',
+        entry: 'src/client/main.js',
         // the source template
         template: 'public/index.html',
         // output as dist/index.html
         filename: 'index.html'
       }
     }
-  } else {
-    return {
+    : {
       app: {
         entry: 'src/app/main.js',
         template: 'public/index.html',
@@ -99,5 +98,4 @@ function getPages () {
         filename: 'forms.html'
       }
     }
-  }
 }

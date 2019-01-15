@@ -14,6 +14,10 @@
   "description": "The tools is help teacher",
   "license": "GPL-3.0-or-later",
   "private": false,
+  "repository": {
+		"type": "git",
+		"url": "git+https://github.com/GeneralAndKing/teacher-tools.git"
+	},
   "scripts": {
     "lint": "vue-cli-service lint",
     "electron:build": "vue-cli-service electron:build",
@@ -26,8 +30,10 @@
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.4",
+    "ffi": "^2.3.0",
     "nedb": "^1.8.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "sqlite3": "^4.0.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",
@@ -62,5 +68,5 @@
     "vue-template-compiler": "^2.5.21",
     "vuex": "^3.0.1"
   },
-  "main": "background.js"
+  "main": "main.js"
 }

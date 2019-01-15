@@ -68,7 +68,7 @@ app.on('activate', () => {
 app.on('ready', async () => {
   require('electron-debug')({ showDevTools: true })
   if (isDevelopment && !process.env.IS_TEST) {
-    // BrowserWindow.addDevToolsExtension('/home/echo/.config/google-chrome/Default/Extensions/nhdogjmejiglipccpnnnanhbledajbpd/4.1.5_0')
+    BrowserWindow.addDevToolsExtension('/home/echo/Other/vue-devtools/4.1.5_0')
     // BrowserWindow.addDevToolsExtension('_n/vue-devtools/vender')
     // require('vue-devtools').install()
     // Install Vue Devtools
