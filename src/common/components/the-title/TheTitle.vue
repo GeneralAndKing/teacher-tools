@@ -27,6 +27,9 @@ export default {
 </script>
 
 <style scoped lang="less">
+* {
+  .gak-no-select;
+}
 #gak-title {
   position: fixed;
   width: 100%;

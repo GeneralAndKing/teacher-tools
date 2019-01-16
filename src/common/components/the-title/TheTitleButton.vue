@@ -44,6 +44,9 @@ export default {
 </script>
 
 <style scoped lang="less">
+* {
+  .gak-no-select;
+}
 #close {
   &:hover{
     background: @error-color;

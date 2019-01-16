@@ -45,19 +45,33 @@ import { mapState, mapMutations } from 'vuex'
 export default {
   data () {
     return {
+      /**
+       * 初始化分割时的比例
+       */
       split: 0.75,
+      /**
+       * 当前用户名
+       */
       username: 'teacher',
+      /**
+       * 输入框的 dom 对象
+       */
       chatContent: null,
+      /**
+       * 控制表情选择的显示与隐藏
+       */
       expression: false
     }
   },
   mounted: function () {
     this.chatContent = this.$refs.chatContent
+    // 滚动到底部
     this.$nextTick(() => {
       this.$refs.chat.scrollTop = this.$refs.chat.scrollHeight
     })
   },
   watch: {
+    // 监听，滚动到底部
     contents () {
       this.$nextTick(() => {
         this.$refs.chat.scrollTop = this.$refs.chat.scrollHeight
@@ -75,17 +89,24 @@ export default {
     ...mapMutations([
       'CLEAN_CONTENTS'
     ]),
-    handleVoice: function () {
-      this.$socket.emit('voice')
-    },
+    /**
+     * 重置输入框的内容
+     */
     reset: function () {
       this.chatContent.innerHTML = ''
     },
+    /**
+     * 清除屏幕中显示信息
+     */
     clean: function () {
       this.CLEAN_CONTENTS()
     },
+    /**
+     * 发送信息
+     */
     send: function () {
       const _this = this
+      // 内容为空则不发送
       if (_this.chatContent.innerHTML.trim() === '') {
         this.chatContent.innerHTML = ''
         return
@@ -98,8 +119,13 @@ export default {
       })
       this.reset()
     },
+    /**
+     * 表情选择
+     * @param symbol 选择的表情
+     */
     handleSymbolClick (symbol) {
       const _this = this
+      // 如果存在
       if (isSymbol(symbol)) {
         let img = document.createElement('img')
         img.setAttribute('src', SYMBOLS[symbol])

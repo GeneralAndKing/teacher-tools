@@ -6,11 +6,12 @@ import 'normalize.css'
 import 'common@/plugins/iview.js'
 import $socket from './lib/socket-instance'
 import VueSocketio from 'vue-socket.io-extended'
-
+import VueClipboard from 'vue-clipboard2'
 Vue.config.devtools = true
 Vue.config.productionTip = false
 
 Vue.use(VueSocketio, $socket, { store })
+Vue.use(VueClipboard)
 
 new Vue({
   router,
