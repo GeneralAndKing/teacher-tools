@@ -7,7 +7,9 @@ found in https://github.com/iview/iview/blob/2.0/src/styles/custom.less.
 
 // iview variables
 @primary-color: rgb(68, 68, 68);
+@menu-dark-title: rgb(68, 68, 68);
 @background-color: #252526;
+@text-color: #252526;
 @gak-text-color: rgb(255, 246, 246);
 /*
 gak variables
@@ -18,6 +20,7 @@ gak variables
 @gak-text-color-active: rgb(255, 246, 246);
 @gak-text-color-bg-active: rgb(107, 106, 106);
 @gak-text-normal: 20px;
+@gak-text-placeholder: rgb(218, 216, 216);
 @gak-no-visible: rgba(0, 0, 0, 0);
 
 @gak-title-height: 30px;
@@ -42,6 +45,29 @@ gak variables
 .gak-bg-no-visible {
   background-color: @gak-no-visible;
 }
+.gak-no-display {
+  display: none;
+}
+.gak-display-block {
+  display: block;
+}
+
+// 表情图标
+.gak-expression {
+  cursor: pointer;
+  &:hover {
+    outline: 2px solid #41b883;
+  }
+  margin: 1px;
+}
+.gak-float-left {
+  float: left;
+}
+
+.gak-no-select {
+  -webkit-user-select:none;
+}
+
 
 .gak-title-btn {
   .gak-text-center;
@@ -57,7 +83,27 @@ gak variables
     color: @gak-text-color-active;
   }
 }
-
+// 表情
+.gak-picker {
+  box-sizing: border-box;
+  padding: 0 4px 4px 0;
+  max-width: 328px;
+  margin: 0 auto;
+  box-shadow: 0 0 5px #ccc;
+  border-radius: 4px;
+  text-align: left;
+  position: absolute;
+  top: -90px;
+  z-index: 20;
+  background: white;
+  .gak-symbol,.baidu-expressions-symbol {
+    margin: 1px;
+    cursor: pointer;
+    &:hover {
+      outline: 2px solid #41b883;
+    }
+  }
+}
 
 .gak-scroll {
   height: 100%;
